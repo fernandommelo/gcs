@@ -7,5 +7,23 @@
 </head>
 <body> 
     <p> Nesta homepage, você encontrará conteúdos relevantes sobre bem-estar, qualidade de vida e cuidados com a saúde. Nosso objetivo é informar e conscientizar, oferecendo dicas práticas e atualizadas para uma vida mais saudável</p>
+
+    <form action="/avaliarCircunferencia" method="post">
+        <label>Circunferencia (kg):</label>
+        <input type="number" name="circunferencia" step="0.1">
+
+        <label>Sexo:</label>
+        <input type="radio" id="masculino" name="sexo" value="masculino"/>
+        <label for="masculino">Masculino</label>
+
+        <input type="radio" id="feminino" name="sexo" value="feminino"/>
+        <label for="masculino">Feminino</label>
+
+        <button type="submit">Verificar circunferencia</button>
+    </form>
+
+    <% if (message) { %>
+        <span><%= message %></span>
+    <% } %>
 </body>
 </html>
