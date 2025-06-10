@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Mais Saúde</title>
-  
 </head>
 <body> 
+    <h1>Mais saúde!!!</h1>
     <p> Nesta homepage, você encontrará conteúdos relevantes sobre bem-estar, qualidade de vida e cuidados com a saúde. Nosso objetivo é informar e conscientizar, oferecendo dicas práticas e atualizadas para uma vida mais saudável</p>
-
+<hr> 
+  <h2> Avaliar Circunferencia</h2>
     <form action="/avaliarCircunferencia" method="post">
         <label>Circunferencia (kg):</label>
         <input type="number" name="circunferencia" step="0.1">
@@ -21,9 +22,26 @@
 
         <button type="submit">Verificar circunferencia</button>
     </form>
+    
+    <% if (message-circunferencia) { %>
+        <span><%= message-circunferencia %></span>
+    <% } %>
+    <hr>
+    <h2>Calculadora de IMC</h2>
+  
+    <form action="/calcularImc" method="post">
+        <label>Peso (kg):</label>
+        <input type="number" name="peso" step="0.1">
+        
+        <label>Altura (m):</label>
+        <input type="number" name="altura" step="0.1">
+        
+        <button type="submit">Calcular IMC</button>
 
-    <% if (message) { %>
-        <span><%= message %></span>
+    </form>
+
+    <% if (message-imc) { %>
+        <span><%= message-imc %></span>
     <% } %>
 </body>
 </html>
