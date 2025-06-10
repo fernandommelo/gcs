@@ -14,7 +14,7 @@ APP.listen(8080, (error) => {
 });
 
 APP.get('/', (req, res) => {
-    res.render('index', {message-imc : null, message-circunferencia : null});
+    res.render('index', {message_imc : null, message_circunferencia : null});
 
 });
 
@@ -22,22 +22,38 @@ APP.post('/calcularImc', (req, res) => {
     let peso = parseFloat(req.body.peso);
     let altura = parseFloat(req.body.altura);
     
-    let message-imc;
+    let message_imc;
     
     if(!peso || !altura) {
-      message-imc = 'Indique um valor'
-        return res.render('index', { message-imc });   
+      message_imc = 'Indique um valor'
+        return res.render('index', { message_imc, message_circunferencia : null });   
     }
 
     if(peso < 1 || altura < 1) {
-        message-imc = 'Indique valores positivos!'
-        return res.render('index', { message-imc });   
+        message_imc = 'Indique valores positivos!'
+        return res.render('index', { message_imc, message_circunferencia : null });   
+    }
+    console.log(peso)
+    console.log(altura)
+    imc = peso / (altura * altura);
+    console.log(imc)
+
+    let grau;
+
+    if(imc >= 40){
+        grau = 'Obesidade grau II';
+    } else if(imc >= 30){
+        grau = 'Obesidade grau I';
+    } else if(imc >= 25) {
+        grau = 'Acima do peso';
+    } else if(imc >= 18,6){
+        grau = 'Peso normal';
+    } else {
+        grau = 'Abaixo do peso';
     }
 
-    imc = peso / (altura * altura);
-
-    message-imc = `Seu imc é ${imc.toFixed(2)}` 
-    res.render('index', { message-imc });
+    message_imc = `Seu imc é ${imc.toFixed(2)}. ${grau}` 
+    res.render('index', { message_imc, message_circunferencia : null });
 
 });
 
@@ -45,18 +61,18 @@ APP.post('/avaliarCircunferencia', (req, res) => {
     let circunferencia = parseFloat(req.body.circunferencia);
     let sexo = req.body.sexo;
 
-    let message-circunferencia;
+    let message_circunferencia;
     
     if(!circunferencia || !sexo) {
-        message-circunferencia = 'Preencha todos os valores'
-        return res.render('index', { message-circunferencia });   
+        message_circunferencia = 'Preencha todos os valores'
+        return res.render('index', { message_circunferencia,message_imc : null });   
     }
 
     if((sexo == 'masculino' && circunferencia > 94) || (sexo == 'feminino' && circunferencia > 80)) {
-        message-circunferencia = 'Possui riscos! Consultar médico'
-        return res.render('index', { message-circunferencia });   
+        message_circunferencia = 'Possui riscos! Consultar médico'
+        return res.render('index', { message_circunferencia, message_imc : null });   
     }
 
     message = 'Fora de risco!' 
-    res.render('index', { message-circunferencia});
+    res.render('index', { message_circunferencia, message_imc : null});
 });
