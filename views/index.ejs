@@ -11,7 +11,7 @@
   <h2> Avaliar Circunferencia</h2>
     <form action="/avaliarCircunferencia" method="post">
         <label>Circunferencia (kg):</label>
-        <input type="number" name="circunferencia" step="0.1">
+        <input type="number" name="circunferencia" step="0.11">
 
         <label>Sexo:</label>
         <input type="radio" id="masculino" name="sexo" value="masculino"/>
@@ -31,10 +31,10 @@
   
     <form action="/calcularImc" method="post">
         <label>Peso (kg):</label>
-        <input type="number" name="peso" step="0.1">
+        <input type="text" name="peso" >
         
         <label>Altura (m):</label>
-        <input type="number" name="altura" step="0.1">
+        <input type="text" name="altura" >
         
         <button type="submit">Calcular IMC</button>
 
