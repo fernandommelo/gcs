@@ -3,45 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Mais Saúde</title>
+
+    <link rel="stylesheet" href="css/css.css">
 </head>
+
 <body> 
-    <h1>Mais saúde!!!</h1>
-    <p> Nesta homepage, você encontrará conteúdos relevantes sobre bem-estar, qualidade de vida e cuidados com a saúde. Nosso objetivo é informar e conscientizar, oferecendo dicas práticas e atualizadas para uma vida mais saudável</p>
-<hr> 
-  <h2> Avaliar Circunferencia</h2>
-    <form action="/avaliarCircunferencia" method="post">
-        <label>Circunferencia (kg):</label>
-        <input type="number" name="circunferencia" step="0.11">
+    <main>
+        <section>
+            <h1>Mais saúde!!!</h1>
+            <p> Nesta homepage, você encontrará conteúdos relevantes sobre bem-estar, qualidade de vida e cuidados com a saúde. Nosso objetivo é informar e conscientizar, oferecendo dicas práticas e atualizadas para uma vida mais saudável</p>
+        </section>
 
-        <label>Sexo:</label>
-        <input type="radio" id="masculino" name="sexo" value="masculino"/>
-        <label for="masculino">Masculino</label>
-
-        <input type="radio" id="feminino" name="sexo" value="feminino"/>
-        <label for="masculino">Feminino</label>
-
-        <button type="submit">Verificar circunferencia</button>
-    </form>
-    
-    <% if (message_circunferencia) { %>
-        <span><%= message_circunferencia %></span>
-    <% } %>
-    <hr>
-    <h2>Calculadora de IMC</h2>
-  
-    <form action="/calcularImc" method="post">
-        <label>Peso (kg):</label>
-        <input type="text" name="peso" >
+        <section>
+            <h2> Avaliar Circunferencia</h2>
+            <form action="/avaliarCircunferencia" method="post">
+                <label>Circunferencia (kg):</label>
+                <input type="text" name="circunferencia">
         
-        <label>Altura (m):</label>
-        <input type="text" name="altura" >
+                <label>Sexo:</label>
+                <input type="radio" id="masculino" name="sexo" value="masculino"/>
+                <label for="masculino">Masculino</label>
         
-        <button type="submit">Calcular IMC</button>
+                <input type="radio" id="feminino" name="sexo" value="feminino"/>
+                <label for="masculino">Feminino</label>
+        
+                <button type="submit">Verificar circunferencia</button>
+            </form>
+            
+            <% if (message_circunferencia) { %>
+                <span><%= message_circunferencia %></span>
+            <% } %>
+        </section>
 
-    </form>
-
-    <% if (message_imc) { %>
-        <span><%= message_imc %></span>
-    <% } %>
+        <section>
+            <h2>Calculadora de IMC</h2>
+          
+            <form action="/calcularImc" method="post">
+                <label>Peso (kg):</label>
+                <input type="text" name="peso" >
+                
+                <label>Altura (m):</label>
+                <input type="text" name="altura" >
+                
+                <button type="submit">Calcular IMC</button>
+        
+            </form>
+        
+            <% if (message_imc) { %>
+                <span><%= message_imc %></span>
+            <% } %>
+        </section>
+    </main>
 </body>
 </html>
