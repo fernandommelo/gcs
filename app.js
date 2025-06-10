@@ -33,10 +33,26 @@ APP.post('/calcularImc', (req, res) => {
         message_imc = 'Indique valores positivos!'
         return res.render('index', { message_imc, message_circunferencia : null });   
     }
-
+    console.log(peso)
+    console.log(altura)
     imc = peso / (altura * altura);
+    console.log(imc)
 
-    message_imc = `Seu imc é ${imc.toFixed(2)}` 
+    let grau;
+
+    if(imc >= 40){
+        grau = 'Obesidade grau II';
+    } else if(imc >= 30){
+        grau = 'Obesidade grau I';
+    } else if(imc >= 25) {
+        grau = 'Acima do peso';
+    } else if(imc >= 18,6){
+        grau = 'Peso normal';
+    } else {
+        grau = 'Abaixo do peso';
+    }
+
+    message_imc = `Seu imc é ${imc.toFixed(2)}. ${grau}` 
     res.render('index', { message_imc, message_circunferencia : null });
 
 });
